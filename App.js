@@ -21,7 +21,7 @@ import {
 } from 'react-native';
 import RNFS from "react-native-fs";
 import FileViewer from "react-native-file-viewer";
-import axios  from 'axios';
+import axios from 'axios';
 // import FileViewer from "react-native-file-viewer";
 
 const App = () => {
@@ -74,8 +74,8 @@ const App = () => {
     },
     progress: (res) => {
       let persentage = res.bytesWritten / res.contentLength
-      console.log(`${(persentage*100).toFixed()}%`);
-      setProgress(`${(persentage*100).toFixed()}%`)
+      console.log(`${(persentage * 100).toFixed()}%`);
+      setProgress(`${(persentage * 100).toFixed()}%`)
     },
   };
 
@@ -118,7 +118,7 @@ const App = () => {
           onPress={() => Linking.openURL(link)}
         >
           <View>
-            <Text>OPEN LINK</Text>
+            <Text>Testing Deeplink Apple Maps</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -126,13 +126,24 @@ const App = () => {
           style={{
             width: 100,
             height: 100,
-            backgroundColor: 'grey',
-            margin: 10
+            backgroundColor: 'lightsalmon',
+            margin: 10,
+            justifyContent: 'center',
+            alignItems: 'center'
           }}
         >
           <View>
             <Text>
-              hehe
+              Testing Download PDF
+            </Text>
+          </View>
+          <View
+            style={{
+              margin: 10
+            }}
+          >
+            <Text>
+              {progress !== '100%' ? `Progress Download ${progress}` : 'Done'}
             </Text>
           </View>
         </TouchableOpacity>
@@ -146,26 +157,6 @@ const App = () => {
         >
           {loading ? <View><Text>Loading</Text><ActivityIndicator size={'small'} /></View> : <View></View>}
         </View>
-      </View>
-      <View>
-        <TouchableOpacity
-          onPress={() => download()}
-          style={{
-            width: 100,
-            height: 100,
-            backgroundColor: 'green',
-            margin: 10
-          }}
-        >
-          <Text>
-            Download
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View>
-        <Text>
-          {progress !== '100%' ? `Progress Download ${progress}` : 'Done'}
-        </Text>
       </View>
     </SafeAreaView>
   );
